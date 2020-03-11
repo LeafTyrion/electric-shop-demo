@@ -31,8 +31,17 @@ Page({
       },
     })
     console.log(result);
+    const goodsObj = result.data.message;
     this.setData({
-      goodsObj: result.data.message,
+      // goodsObj: result.data.message,
+      // 优化数据获取，提高性能
+      goodsObj: {
+        goods_name: goodsObj.goods_name,
+        goods_price: goodsObj.goods_price,
+        // iphone对富文本中部分属性不识别，如webp格式,可以手动进行替换
+        goods_introduce: goodsObj.goods_introduce.replace(/\.webp/g,'.jpg'),
+        pics: goodsObj.pics,
+      }
     })
   }
 })
