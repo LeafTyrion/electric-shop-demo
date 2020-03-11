@@ -12,6 +12,8 @@ Page({
   data: {
     goodsObj: {}
   },
+
+  GoodsInfo: {},
   /**
    * 生命周期函数--监听页面加载
    */
@@ -32,6 +34,7 @@ Page({
     })
     console.log(result);
     const goodsObj = result.data.message;
+    this.GoodsInfo = goodsObj;
     this.setData({
       // goodsObj: result.data.message,
       // 优化数据获取，提高性能
@@ -39,9 +42,37 @@ Page({
         goods_name: goodsObj.goods_name,
         goods_price: goodsObj.goods_price,
         // iphone对富文本中部分属性不识别，如webp格式,可以手动进行替换
-        goods_introduce: goodsObj.goods_introduce.replace(/\.webp/g,'.jpg'),
+        goods_introduce: goodsObj.goods_introduce.replace(/\.webp/g, '.jpg'),
         pics: goodsObj.pics,
       }
     })
+  },
+  // 点击轮播图，放大预览
+  handlePreviewImage(e) {
+    const urls = this.GoodsInfo.pics.map(v => v.pics_mid);
+    const current = e.currentTarget.dataset.url;
+    wx.previewImage({
+      current,
+      urls
+    })
+  },
+  // 加入购物车功能，使用缓存
+  handleCartAdd() {
+    let cart = wx.getStorageSync("cart") || [];
+
+    let index = cart.findIndex(v => v.goods_id === this.GoodsInfo.goods_id)
+    if (index === -1) {
+      this.GoodsInfo.num = 1;
+      cart.push(this.GoodsInfo);
+    } else {
+      cart[index].num++;
+    }
+    wx.setStorageSync("cart",cart);
+    wx.showToast({
+      title: '加入成功',
+      icon: 'success',
+      // mask有间隔时间，避免多点
+      mask: true,
+    });
   }
 })
