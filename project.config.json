@@ -60,9 +60,9 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/goods_detail/goods_detail",
-					"pathName": "pages/goods_detail/goods_detail",
-					"query": "goods_id=43986",
+					"name": "pages/cart/cart",
+					"pathName": "pages/cart/cart",
+					"query": "",
 					"scene": null
 				}
 			]

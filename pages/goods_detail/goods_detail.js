@@ -63,15 +63,16 @@ Page({
     let index = cart.findIndex(v => v.goods_id === this.GoodsInfo.goods_id)
     if (index === -1) {
       this.GoodsInfo.num = 1;
+      this.GoodsInfo.checked = true;
       cart.push(this.GoodsInfo);
     } else {
       cart[index].num++;
     }
-    wx.setStorageSync("cart",cart);
+    wx.setStorageSync("cart", cart);
     wx.showToast({
       title: '加入成功',
       icon: 'success',
-      // mask有间隔时间，避免多点
+      // mask有间隔时间，避免连续多次点击
       mask: true,
     });
   }
