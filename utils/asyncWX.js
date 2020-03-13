@@ -75,3 +75,32 @@ export const showToast = ({ title }) => {
         });
     })
 }
+
+export const login = () => {
+    return new Promise((resolve, reject) => {
+        wx.login({
+            timeout: 10000,
+            success: (result) => {
+                resolve(result)
+            },
+            fail: (error) => {
+                reject(error)
+            },
+        });
+    })
+}
+
+// 微信官方提供的支付接口
+export const requestPayment = (pay) => {
+    return new Promise((resolve, reject) => {
+        wx.requestPayment({
+            ...pay,
+            success: (result) => {
+                resolve(result)
+            },
+            fail: (error) => {
+                reject(error)
+            },
+        });
+    })
+}

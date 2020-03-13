@@ -28,3 +28,31 @@ export const request = (params) => {
     });
   })
 }
+
+let ajaxTimes1 = 0;
+export const request1 = (params) => {
+  ajaxTimes1++;
+  // 添加加载中效果
+  wx.showLoading({
+    title: '加载中',
+    mask: true,
+  })
+  return new Promise((resolve, reject) => {
+    wx.request({
+      ...params,
+      url: params.url,
+      success: (result) => {
+        resolve(result);
+      },
+      fail: (err) => {
+        reject(err);
+      },
+      complete: () => {
+        ajaxTimes1--;
+        if (ajaxTimes === 0) {
+          wx.hideLoading()
+        }
+      }
+    });
+  })
+}
