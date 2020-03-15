@@ -1,6 +1,6 @@
 import { requestPayment, showToast } from "../../utils/asyncWX.js"
 import regeneratorRuntime from "../../lib/regenerator-runtime/runtime.js"
-import { request1 } from "../../request/index.js"
+import { request } from "../../request/index.js"
 Page({
 
   /**
@@ -53,7 +53,7 @@ Page({
         return;
       }
       // 创建订单
-      const header = { Authorization: token };
+      // const header = { Authorization: token };
       const order_price = this.data.totalPrice;
       const consignee_addr = this.data.address.all;
       const cart = this.data.cart;
@@ -65,16 +65,15 @@ Page({
       }))
       const orderParams = { order_price, consignee_addr, goods };
       // 发送POST请求，传输订单信息
-      const orderNumber = await request1({
-        url: "http://127.0.0.1:8084/api/wx-order",
+      const orderNumber = await request({
+        url: "/my/orders/create",
         method: "POST",
         data: orderParams,
-        header
       });
-      const pay = await request1({
-        url: "http://127.0.0.1:8084/api/wx-pay",
+      // 预支付接口，获取微信支付要求的参数pay
+      const pay = await request({
+        url: "/my/orders/req_unifiedorder",
         method: "POST",
-        header,
         data: orderNumber.data
       });
       // 微信官方提供的支付接口

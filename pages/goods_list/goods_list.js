@@ -10,7 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: [{
+    tabs: [
+      {
         id: 0,
         value: "综合",
         isActive: true
