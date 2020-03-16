@@ -24,6 +24,7 @@ page {
 }
 .fb_main .fb_content textarea {
   padding: 10rpx;
+  height: 500rpx;
 }
 .fb_main .fb_content .fb_tool {
   display: flex;
@@ -42,6 +43,7 @@ page {
   margin-left: 20rpx;
   margin-top: 20rpx;
   color: #cccccc;
+  position: relative;
 }
 .fb_main .fb_content .fb_tool .up_img_item {
   margin-left: 20rpx;

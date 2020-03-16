@@ -5,8 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: [
-      {
+    tabs: [{
         id: 0,
         value: "体验问题",
         isActive: true
@@ -52,8 +51,12 @@ Page({
   },
   //删除图片，通过data-index传递参数
   handleRemoveImg(e) {
-    const { index } = e.currentTarget.dataset;
-    let { chooseImgs } = this.data;
+    const {
+      index
+    } = e.currentTarget.dataset;
+    let {
+      chooseImgs
+    } = this.data;
     // 1指的是删除1个
     chooseImgs.splice(index, 1);
     this.setData({
@@ -68,7 +71,10 @@ Page({
   },
 
   handleFormSubmit() {
-    const { textValue, chooseImgs } = this.data;
+    const {
+      textValue,
+      chooseImgs
+    } = this.data;
     // 验证内容不为空
     if (!textValue.trim()) {
       wx.showToast({
