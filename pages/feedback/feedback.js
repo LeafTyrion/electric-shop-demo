@@ -104,6 +104,10 @@ Page({
               })
               // todo 调用post接口将图片外链数组和textarea上传到后台中
 
+              wx.hideLoading();
+              wx.navigateBack({
+                delta: 1
+              });
             }
           },
         });
