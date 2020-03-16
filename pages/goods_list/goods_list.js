@@ -1,7 +1,5 @@
 // pages/goods_list/goods_list.js
-import {
-  request
-} from "../../request/index.js";
+import { request } from "../../request/index.js";
 import regeneratorRuntime from "../../lib/regenerator-runtime/runtime.js"
 
 Page({
