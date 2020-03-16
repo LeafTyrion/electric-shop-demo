@@ -1,7 +1,5 @@
 // pages/goods_list/goods_list.js
-import {
-  request
-} from "../../request/index.js";
+import { request } from "../../request/index.js";
 import regeneratorRuntime from "../../lib/regenerator-runtime/runtime.js"
 
 Page({
@@ -10,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: [{
+    tabs: [
+      {
         id: 0,
         value: "综合",
         isActive: true

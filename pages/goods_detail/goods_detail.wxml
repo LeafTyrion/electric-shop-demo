@@ -9,8 +9,8 @@
 <view class="goods_price">￥{{goodsObj.goods_price}}</view>
 <view class="goods_name_row">
     <view class="goods_name">{{goodsObj.goods_name}}</view>
-    <view class="goods_collect">
-        <icon type="download" size="23" />
+    <view class="goods_collect" bindtap="handleCollect">
+        <icon type="{{isCollect?'download':'success'}}" size="23" />
         <view class="collect_text">收藏</view>
     </view>
 </view>
