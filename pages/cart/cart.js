@@ -63,9 +63,7 @@ Page({
       const result = await getSetting();
       const scopeAddress = result.authSetting["scope.address"];
       // 2. 判断权限状态
-      if (scopeAddress === true || scopeAddress === undefined) {
-        await chooseAddress();
-      } else {
+      if (scopeAddress === false) {
         // 3. 诱导用户打开授权页面
         await openSetting();
       }
