@@ -15,7 +15,6 @@
                 <view class="order_time_text">订单日期</view>
                 <view class="order_time_value">{{item.create_time_cn}}</view>
             </view>
-             
         </view>
     </view>
 </Tabs>
